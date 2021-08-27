@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
 
     public GameObject player;
-    public int cameraBackPosition = 10;
+    public int cameraBackPosition = 500;
 
     void LateUpdate()
     {
