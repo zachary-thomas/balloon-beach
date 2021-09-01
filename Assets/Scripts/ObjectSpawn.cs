@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +22,6 @@ public class ObjectSpawn : MonoBehaviour
     private void SpawnTriangles()
     {
         spawnObstaclePosition = new Vector3(0, 0, spawnObstaclePosition.z + 30);
-        Instantiate(trianglePrefabs[(0)], spawnObstaclePosition, Quaternion.identity);
+        Instantiate(trianglePrefabs[(Random.Range(0,trianglePrefabs.Length))], spawnObstaclePosition, Quaternion.identity);
     }
 }
