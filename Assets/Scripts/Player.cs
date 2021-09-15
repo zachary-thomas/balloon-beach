@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public float playerSpeed = 700;
+    public float playerSpeed = 1500;
     public float directionalSpeed = 20;
     
     // Start is called before the first frame update

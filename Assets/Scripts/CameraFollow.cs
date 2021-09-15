@@ -6,11 +6,11 @@ public class CameraFollow : MonoBehaviour
 {
 
     public GameObject player;
-    public int cameraBackPosition = 10;
+    public int cameraBackPosition = 50;
 
     void LateUpdate()
     {
-        transform.position = new Vector3(0, gameObject.transform.position.y, player.gameObject.transform.position.z - cameraFollowDistance);
+        transform.position = new Vector3(0, gameObject.transform.position.y, player.gameObject.transform.position.z - cameraBackPosition);
     }
 
     //void LateUpdate()
