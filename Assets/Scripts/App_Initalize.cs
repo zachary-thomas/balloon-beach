@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class App_Initalize : MonoBehaviour
 {
+    public GameObject inMenuUI;
+    public GameObject inGameUI;
+    public GameObject gameOverUI;
+    public GameObject player;
+
 
     public float curvature = 2.0f;
     public float trimming = 0.1f;
@@ -13,16 +18,18 @@ public class App_Initalize : MonoBehaviour
     {
         Shader.SetGlobalFloat("_Curvature", curvature);
         Shader.SetGlobalFloat("_Trimming", trimming);
+
+        Application.targetFrameRate = 60;
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        inMenuUI.gameObject.SetActive(true);
+        inGameUI.gameObject.SetActive(false);
+        gameOverUI.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
