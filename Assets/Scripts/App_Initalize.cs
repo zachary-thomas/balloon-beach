@@ -25,13 +25,27 @@ public class App_Initalize : MonoBehaviour
     void Start()
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-        inMenuUI.gameObject.SetActive(true);
-        inGameUI.gameObject.SetActive(false);
-        gameOverUI.gameObject.SetActive(false);
+        setMenuActive(true, false, false);
     }
 
-    void Update()
+    public void PlayButton()
     {
-        
+        StartCoroutine(StartGame(0.0f));
+    }
+
+    IEnumerator StartGame(float waitTime)
+    {
+        setMenuActive(false, true, false);
+        yield return new WaitForSeconds(waitTime);
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+
+    }
+
+    private void setMenuActive(bool inMenu, bool inGame, bool gameOver)
+    {
+        inMenuUI.gameObject.SetActive(inMenu);
+        inGameUI.gameObject.SetActive(inGame);
+        gameOverUI.gameObject.SetActive(gameOver);
     }
 }
