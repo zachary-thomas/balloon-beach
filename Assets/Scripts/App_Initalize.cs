@@ -8,6 +8,9 @@ public class App_Initalize : MonoBehaviour
     public GameObject inGameUI;
     public GameObject gameOverUI;
     public GameObject player;
+    public bool isGameActive = false;
+
+    private bool isGameStarted = false;
 
 
     public float curvature = 2.0f;
@@ -30,7 +33,22 @@ public class App_Initalize : MonoBehaviour
 
     public void PlayButton()
     {
-        StartCoroutine(StartGame(0.0f));
+        if (isGameStarted)
+        {
+            StartCoroutine(StartGame(1.0f));
+        }
+        else
+        {
+            StartCoroutine(StartGame(0.0f));
+            isGameStarted = true;
+        }
+
+    }
+
+    public void PauseGame()
+    {
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        setMenuActive(true, false, false);
     }
 
     IEnumerator StartGame(float waitTime)
