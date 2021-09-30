@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class App_Initalize : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class App_Initalize : MonoBehaviour
     public GameObject inGameUI;
     public GameObject gameOverUI;
     public GameObject player;
-    public bool isGameActive = false;
 
     private bool isGameStarted = false;
 
@@ -49,6 +49,24 @@ public class App_Initalize : MonoBehaviour
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         setMenuActive(true, false, false);
+    }
+
+    public void GameOver()
+    {
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        setMenuActive(false, false, true);
+    }
+
+    public void ShowAd()
+    {
+        // TODO
+        StartCoroutine(StartGame(1.0f));
+    }
+
+    public void RestartGame()
+    {
+        // Loads scene in 0 spot in build settings
+        SceneManager.LoadScene(0);
     }
 
     IEnumerator StartGame(float waitTime)

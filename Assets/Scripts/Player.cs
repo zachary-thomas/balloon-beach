@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    public GameObject sceneManager;
     public float playerSpeed = 1500;
     public float directionalSpeed = 20;
     public AudioClip scoreUp;
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "triangle")
         {
             GetComponent<AudioSource>().PlayOneShot(damage, 1.0f);
+            sceneManager.GetComponent<App_Initalize>().GameOver();
         }
     }
 
