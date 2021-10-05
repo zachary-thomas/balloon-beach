@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class App_Initalize : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class App_Initalize : MonoBehaviour
 
     public float curvature = 2.0f;
     public float trimming = 0.1f;
+
+    // Ads
+    public GameObject adButton;
+    private bool hasSeenRewardedAd = false;
 
     // Called before Start
     private void Awake()
@@ -55,11 +61,18 @@ public class App_Initalize : MonoBehaviour
     {
         player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         setMenuActive(false, false, true);
+
+        if(hasSeenRewardedAd == true)
+        {
+            adButton.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+            adButton.GetComponent<Button>().enabled = false;
+        }
     }
 
     public void ShowAd()
     {
-        // TODO
+        // testing
+        hasSeenRewardedAd = true;
         StartCoroutine(StartGame(1.0f));
     }
 
