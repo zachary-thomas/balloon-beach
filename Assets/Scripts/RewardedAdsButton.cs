@@ -20,6 +20,12 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         _showAdButton.interactable = false;
     }
 
+    void Start()
+    {
+        LoadAd();
+        OnUnityAdsAdLoaded(_adUnitId);
+    }
+
     // Load content to the Ad Unit:
     public void LoadAd()
     {
