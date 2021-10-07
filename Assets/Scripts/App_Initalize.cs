@@ -11,6 +11,7 @@ public class App_Initalize : MonoBehaviour
     public GameObject inGameUI;
     public GameObject gameOverUI;
     public GameObject player;
+    public GameObject restartButton;
 
     private bool isGameStarted = false;
 
@@ -66,6 +67,8 @@ public class App_Initalize : MonoBehaviour
         {
             adButton.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
             adButton.GetComponent<Button>().enabled = false;
+            adButton.GetComponent<Animator>().enabled = false;
+            restartButton.GetComponent<Animator>().enabled = true;
         }
     }
 
