@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Increase speed over time
+        playerSpeed += 1.0f;
+
         #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
         float moveHorizontal = Input.GetAxis("Horizontal");
         transform.position = Vector3.Lerp(gameObject.transform.position, 
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
         #endif
 
         GetComponent<Rigidbody>().velocity = Vector3.forward * playerSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.right * GetComponent<Rigidbody>().velocity.z / 3);
 
         // Mobile
         Vector2 touch = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10f));
